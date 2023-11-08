@@ -1,11 +1,33 @@
-<form class="row">
-  <mat-form-field class="col-8">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi" />
-  </mat-form-field>
+<form class="row justify-content-center align-items-center">
+  <div class="col-8">
+    <mat-form-field class="w-100">
+      <mat-label>Usuario</mat-label>
+      <span matPrefix>
+        <fa-icon [icon]="faUser" class="golden-icon px-2" size="lg"></fa-icon>
+      </span>
 
-  <mat-form-field class="col-8">
-    <mat-label>Leave a comment</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-  </mat-form-field>
+      <input matInput type="text" />
+    </mat-form-field>
+  </div>
+
+  <div class="col-8">
+    <mat-form-field class="w-100">
+      <mat-label>Contraseña</mat-label>
+      <span matPrefix>
+        <fa-icon [icon]="faLock" class="golden-icon px-2" size="lg"></fa-icon>
+      </span>
+      <input matInput [type]="showPassword ? 'text' : 'password'" />
+      <mat-icon
+        matSuffix
+        (click)="toggleSHowPassword()"
+        [fontIcon]="showPassword ? 'visibility' : 'visibility_off'"
+      ></mat-icon>
+    </mat-form-field>
+  </div>
 </form>
+
+<div class="row justify-content-center align-items-center">
+  <div class="col-auto">
+    <button mat-raised-button color="primary">Iniciar sesión</button>
+  </div>
+</div>
