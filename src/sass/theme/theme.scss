@@ -1,3 +1,113 @@
 @use '@angular/material' as mat;
 
 @include mat.core();
+
+/* For use in src/lib/core/theming/_palette.scss */
+$primary: (50 : #fef2e0,
+    100 : #fbdeb3,
+    200 : #f9c980,
+    300 : #f7b34d,
+    400 : #f5a226,
+    500 : #f39200,
+    600 : #f18a00,
+    700 : #ef7f00,
+    800 : #ed7500,
+    900 : #ea6300,
+    A100 : #ffffff,
+    A200 : #ffeade,
+    A400 : #ffc9ab,
+    A700 : #ffb991,
+    contrast: (50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+    ));
+
+/* For use in src/lib/core/theming/_palette.scss */
+$accent: (50 : #fef5fa,
+    100 : #fde6f4,
+    200 : #fcd5ec,
+    300 : #fbc4e4,
+    400 : #fab7df,
+    500 : #f9aad9,
+    600 : #f8a3d5,
+    700 : #f799cf,
+    800 : #f690ca,
+    900 : #f57fc0,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #fffcfd,
+    contrast: (50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+    ));
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$warn: (50 : #fbeded,
+    100 : #f6d1d1,
+    200 : #f0b3b3,
+    300 : #e99494,
+    400 : #e57d7d,
+    500 : #e06666,
+    600 : #dc5e5e,
+    700 : #d85353,
+    800 : #d34949,
+    900 : #cb3838,
+    A100 : #ffffff,
+    A200 : #ffe2e2,
+    A400 : #ffafaf,
+    A700 : #ff9696,
+    contrast: (50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+    ));
+
+
+$my-primary: mat.define-palette($primary, 500);
+$my-accent: mat.define-palette($accent, 500);
+$my-warn: mat.define-palette($warn, 500);
+
+$my-theme: mat.define-light-theme((color: (primary: $my-primary,
+        accent: $my-accent,
+        warn: $my-warn,
+      ),
+      typography: mat.define-typography-config($font-family: 'Poppins'),
+      density: 0));
+
+
+@include mat.all-component-themes($my-theme);
+@include mat.strong-focus-indicators-theme($my-theme);
