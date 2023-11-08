@@ -7,6 +7,7 @@ import { AuthComponent } from './auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormLoginComponent } from './login/form-login/form-login.component';
 import { MaterialModule } from 'src/app/modules/material.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MaterialModule } from 'src/app/modules/material.module';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    FontAwesomeModule
   ]
 })
 export class AuthModule { }
