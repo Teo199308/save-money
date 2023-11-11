@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +11,8 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./form-login.component.scss']
 })
 export class FormLoginComponent {
+
+  formLogin: FormGroup = new FormGroup({});
 
   //#region ICONS
   faUser = faUser;

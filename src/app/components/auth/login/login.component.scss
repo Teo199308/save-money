@@ -1,3 +1,5 @@
+@import 'src/sass/variables';
+
 .container {
   height: 100vh;
 
@@ -7,8 +9,22 @@
     align-items: center;
     flex-direction: column;
 
-    h1 {
-      font-family: 'Poppins', sans-serif;
+    .row {
+      text-align: center;
+
+      h1 {
+        font-weight: bold;
+        color: $golden-color;
+      }
+
+      p {
+        color: $secundary-color;
+      }
+    }
+
+    .register {
+      text-decoration: underline;
+      color: $secundary-color;
     }
   }
 }
