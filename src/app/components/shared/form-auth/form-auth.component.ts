@@ -4,14 +4,12 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 
-
 @Component({
-  selector: 'app-form-login',
-  templateUrl: './form-login.component.html',
-  styleUrls: ['./form-login.component.scss']
+  selector: 'app-form-auth',
+  templateUrl: './form-auth.component.html',
+  styleUrls: ['./form-auth.component.scss']
 })
-export class FormLoginComponent {
-
+export class FormAuthComponent {
   formLogin: FormGroup = new FormGroup({});
 
   //#region ICONS

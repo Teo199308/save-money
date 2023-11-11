@@ -5,23 +5,23 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormLoginComponent } from './login/form-login/form-login.component';
 import { MaterialModule } from 'src/app/modules/material.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RegisterComponent } from './register/register.component';
+import { FormAuthModule } from 'src/app/components/shared/form-auth/form-auth.module';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     AuthComponent,
-    FormLoginComponent
+    RegisterComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    FontAwesomeModule
+    FormAuthModule
   ]
 })
 export class AuthModule { }
