@@ -1,3 +1,9 @@
 body {
   background-color: $backgroud-light;
 }
+
+button {
+  &.mat-mdc-raised-button:not(:disabled) {
+    color: white;
+  }
+}
