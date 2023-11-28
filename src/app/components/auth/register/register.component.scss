@@ -1,0 +1,30 @@
+@import 'src/sass/variables';
+
+.container {
+  height: 100vh;
+
+  .content-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .row {
+      text-align: center;
+
+      h1 {
+        font-weight: bold;
+        color: $golden-color;
+      }
+
+      p {
+        color: $secundary-color;
+      }
+    }
+
+    .register {
+      text-decoration: underline;
+      color: $secundary-color;
+    }
+  }
+}
