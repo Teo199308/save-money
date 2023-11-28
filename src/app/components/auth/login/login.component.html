@@ -9,12 +9,26 @@
     </div>
     <div class="col-md-6 col-12 content-form">
       <div class="row">
-        <h1>Ahorrandito</h1>
-        <p>Una manera divertida de ahorrar</p>
-      </div>
-      <app-form-auth></app-form-auth>
+        <div>
+          <h1>Ahorrandito</h1>
+          <p>Una manera divertida de ahorrar</p>
+        </div>
 
-      <p class="register mt-3" [routerLink]="['register']">REGISTRARSE</p>
+        <div class="d-flex flex-column align-items-center">
+          <span>Iniciar sesión con:</span>
+
+          <button
+            mat-raised-button
+            class="login-google-btn mt-4"
+            (click)="loginWithGoogle()"
+          >
+            <img src="../../../../assets/img/google-icon.svg" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <!-- <app-form-auth></app-form-auth> -->
+      <!-- <a class="register mt-3" [routerLink]="['/auth/register']">REGISTRARSE</a> -->
     </div>
   </div>
 </div>

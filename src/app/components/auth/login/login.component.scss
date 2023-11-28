@@ -10,7 +10,10 @@
     flex-direction: column;
 
     .row {
+      height: 405px;
       text-align: center;
+      justify-content: center;
+      align-items: center;
 
       h1 {
         font-weight: bold;
@@ -20,6 +23,12 @@
       p {
         color: $secundary-color;
       }
+    }
+
+    button.login-google-btn {
+      background-color: white;
+      width: 115px;
+      height: 80px;
     }
 
     .register {
