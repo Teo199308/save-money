@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserCredential } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -16,9 +17,9 @@ export class LoginComponent {
 
   loginWithGoogle() {
     this._loginService.loginWithGoogle()
-      .then((res) => {
-        console.log(res);
-        this._router.navigate(['']);
+      .then((resp: UserCredential) => {
+        this._loginService.user = resp;
+        this._router.navigate(['/dashboard']);
       })
       .catch((e) => {
         console.log(e)
