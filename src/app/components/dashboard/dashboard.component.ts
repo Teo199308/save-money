@@ -4,7 +4,7 @@ import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: `./dashboard.component.html`,
+  templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
@@ -17,7 +17,6 @@ export class DashboardComponent {
   ) { }
 
   ngOnInit(): void {
-
     this.currentUserName = this._loginService.user;
   }
 

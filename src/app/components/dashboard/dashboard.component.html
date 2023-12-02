@@ -1,8 +1,22 @@
 <div class="container-fluid py-4 px-5">
-  <button mat-raised-button color="primary" (click)="logout()">
-    Cerrar sesión
-  </button>
+  <div class="row">
+    <div class="col">
+      <h1 class="m-0">Bienvenido</h1>
+      <h2>{{ currentUserName }}</h2>
+    </div>
+    <div class="col-auto">
+      <button
+        mat-icon-button
+        color="primary"
+        (click)="logout()"
+        matTooltip="Cerrar sesión"
+      >
+        <span class="material-symbols-outlined"> logout </span>
+      </button>
+    </div>
+  </div>
 
-  <h1 class="m-0">Bienvenido</h1>
-  <h2>{{ currentUserName }}</h2>
+  <app-select-random-number
+    class="row justify-content-center"
+  ></app-select-random-number>
 </div>
