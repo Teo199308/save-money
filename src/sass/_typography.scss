@@ -1,5 +1,5 @@
 h1 {
-  color: $golden-color;
+  color: $primary-color;
   font-weight: 700;
   font-size: 65px;
   text-shadow: 1px 2px 2px rgb(0 0 0 / 25%);
@@ -20,4 +20,12 @@ h3 {
 p {
   color: $secundary-color;
   font-weight: 400;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
 }
