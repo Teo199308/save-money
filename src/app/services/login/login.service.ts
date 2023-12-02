@@ -23,7 +23,6 @@ export class LoginService {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 
-
   logout() {
     return signOut(this.auth);
   }
