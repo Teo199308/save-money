@@ -6,12 +6,12 @@ import { Auth, GoogleAuthProvider, UserCredential, signInWithPopup, signOut } fr
 })
 export class LoginService {
 
-  get user(): string {
-    const currentUser = JSON.parse(localStorage.getItem('user') as string);
-    return currentUser.user.displayName;
+  get user(): UserCredential {
+    const currentUser: UserCredential = JSON.parse(localStorage.getItem('user') as string);
+    return currentUser;
   }
 
-  set user(user: UserCredential) {
+  set user(user: UserCredential | null) {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
