@@ -6,14 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'save-money';
 
   ngOnInit(): void {
-    const totalDias = 183;
+    const totalDias = 334;
     const arrayDeDias = Array.from({ length: totalDias }, (_, index) => index + 1);
 
-    // Multiplicar cada elemento por 1000 para obtener el valor en miles
-    const arrayValoresMonetarios = arrayDeDias.map((valor) => valor * 1000);
+    const arrayValoresMonetarios = arrayDeDias.map((valor) => {
+      return valor <= 60
+        ? valor * 1000
+        : valor * 100;
+    });
 
     // Sumar los valores en el array
     const sumaTotal = arrayValoresMonetarios.reduce((acumulador, valorActual) => acumulador + valorActual, 0);

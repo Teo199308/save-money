@@ -1,45 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Observable, interval } from 'rxjs';
-import { finalize, map, take } from 'rxjs/operators';
+import { CollectionReference, DocumentData, DocumentReference, Firestore, QuerySnapshot, addDoc, collection, doc, getDocs } from '@angular/fire/firestore';
+import { DataRandomNumber } from 'src/app/interfaces/data-random-number';
+import { LoginService } from 'src/app/services/login/login.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataSaveMoneyService {
-  private _generatedNumbers = new Set<{ randomNumber: number, date: string }>();
-  private _totalNumbers = 10;
+  generatedNumbers = new Set<DataRandomNumber>();
 
   randomNumber!: number;
 
-  constructor() { }
-
-  startNumberAnimation(): Observable<number> {
-    return interval(50)
-      .pipe(
-        take(30),
-        finalize(() => {
-          if (this.randomNumber !== undefined) {
-            this._generatedNumbers.add({ randomNumber: this.randomNumber, date: new Date().toDateString() });
-          }
-          console.log(this._generatedNumbers);
-        }),
-        map((() => this._generateRandomNumber()))
-      );
+  constructor(
+    private firestore: Firestore,
+    private readonly _loginService: LoginService
+  ) {
+    this.getSelectedNumbers();
   }
 
-  private _generateRandomNumber() {
-    if (this._generatedNumbers.size < this._totalNumbers) {
-      const availableNumbers = Array.from({ length: this._totalNumbers }, (_, i) => i + 1)
-        .filter(num => !this._generatedNumbersHasRandomNumber(num));
-
-      const randomIndex = Math.floor(Math.random() * availableNumbers.length);
-      this.randomNumber = availableNumbers[randomIndex];
-    }
-    return this.randomNumber;
+  getSelectedNumbers(): Promise<QuerySnapshot<DocumentData>> {
+    return getDocs(this._getSelectedNumbersCollection());
   }
 
-  private _generatedNumbersHasRandomNumber(randomNumber: number): boolean {
-    return Array.from(this._generatedNumbers.values()).some(generatedNumber => generatedNumber.randomNumber === randomNumber);
+  saveRandomNumber(data: DataRandomNumber) {
+    // Agregar un nuevo documento con el número seleccionado
+    addDoc(this._getSelectedNumbersCollection(), data)
+      .then((resp) => {
+        this.getSelectedNumbers();
+      });
   }
+
+  private _getUserCollection(): DocumentReference<DocumentData> {
+    const uUid = this._loginService.user.user.uid;
+
+    // OBtener la selección 'users' 
+    const userCollection = collection(this.firestore, 'users');
+    return doc(userCollection, uUid);
+  }
+
+  private _getSelectedNumbersCollection(): CollectionReference<DocumentData> {
+    const userDocRef = this._getUserCollection();
+
+    // Obtener la subcolección 'selectedNumbers' del usuario
+    const selectedNumbersCollection = collection(userDocRef, 'selectedNumbers');
+    return selectedNumbersCollection;
+  }
+
 }

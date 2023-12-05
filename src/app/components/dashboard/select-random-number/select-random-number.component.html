@@ -1,14 +1,16 @@
 <div class="content-random-number">
+  <h2>{{ currentDate | date : "MMMM d, y" }}</h2>
   <div>
-    <ng-container *ngIf="numberAnimation$ | async as animationResult; else go">
-      <!-- Contenido si la condición es verdadera -->
+    <ng-container
+      *ngIf="numberAnimation$ | async as animationResult; else selectNumber"
+    >
       <h1>{{ animationResult }}</h1>
     </ng-container>
-    <ng-template #go>
+    <ng-template #selectNumber>
       <h1 class="m-0 init-random" (click)="startNumberAnimation()">GO</h1>
     </ng-template>
   </div>
-  <button mat-raised-button color="primary" (click)="startNumberAnimation()">
+  <!-- <button mat-raised-button color="primary" (click)="startNumberAnimation()">
     Elegir número
-  </button>
+  </button> -->
 </div>
