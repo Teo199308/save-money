@@ -1,4 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import './sass/index.scss';
+
 
 body {
   font-family: 'Poppins', sans-serif;
