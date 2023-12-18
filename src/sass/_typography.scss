@@ -1,0 +1,31 @@
+h1 {
+  color: $primary-color;
+  font-weight: 700;
+  font-size: 65px;
+  text-shadow: 1px 2px 2px rgb(0 0 0 / 25%);
+}
+
+h2 {
+  color: $secundary-color;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+h3 {
+  color: $secundary-color;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+p {
+  color: $secundary-color;
+  font-weight: 400;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}

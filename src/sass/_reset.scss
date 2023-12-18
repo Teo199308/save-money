@@ -1,0 +1,17 @@
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
+}
+
+.mat-mdc-form-field {
+  &.mat-focused,
+  &:hover {
+    .mat-mdc-form-field-focus-overlay {
+      opacity: 0 !important;
+    }
+  }
+}
+
+.golden-icon {
+  color: $primary-color;
+}
+
