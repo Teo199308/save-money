@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CollectionReference, DocumentData, DocumentReference, Firestore, QuerySnapshot, addDoc, collection, doc, getDocs } from '@angular/fire/firestore';
+import { SELECTED_NUMBERS, USERS } from 'src/app/constants/collection-docs-firebase';
 import { DataRandomNumber } from 'src/app/interfaces/data-random-number';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -23,28 +24,25 @@ export class DataSaveMoneyService {
     return getDocs(this._getSelectedNumbersCollection());
   }
 
-  saveRandomNumber(data: DataRandomNumber) {
+  saveRandomNumber(data: DataRandomNumber): Promise<DocumentReference<DocumentData>> {
     // Agregar un nuevo documento con el número seleccionado
-    addDoc(this._getSelectedNumbersCollection(), data)
-      .then((resp) => {
-        this.getSelectedNumbers();
-      });
-  }
-
-  private _getUserCollection(): DocumentReference<DocumentData> {
-    const uUid = this._loginService.user.user.uid;
-
-    // OBtener la selección 'users' 
-    const userCollection = collection(this.firestore, 'users');
-    return doc(userCollection, uUid);
+    return addDoc(this._getSelectedNumbersCollection(), data);
   }
 
   private _getSelectedNumbersCollection(): CollectionReference<DocumentData> {
     const userDocRef = this._getUserCollection();
 
     // Obtener la subcolección 'selectedNumbers' del usuario
-    const selectedNumbersCollection = collection(userDocRef, 'selectedNumbers');
+    const selectedNumbersCollection = collection(userDocRef, SELECTED_NUMBERS);
     return selectedNumbersCollection;
+  }
+
+  private _getUserCollection(): DocumentReference<DocumentData> {
+    const uUid = this._loginService.user.user.uid;
+
+    // Obtener la selección 'users' 
+    const userCollection = collection(this.firestore, USERS);
+    return doc(userCollection, uUid);
   }
 
 }

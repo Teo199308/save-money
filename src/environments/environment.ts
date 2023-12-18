@@ -7,4 +7,6 @@ export const environment = {
     authDomain: 'save-money-3683e.firebaseapp.com',
     messagingSenderId: '952838929754',
   },
+
+  emailApi: 're_8m1kBDDK_MN7j9YRqdh5aAtynCodNWjWU'
 };
