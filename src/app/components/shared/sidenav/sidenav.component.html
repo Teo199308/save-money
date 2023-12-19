@@ -1,0 +1,30 @@
+<div class="sidenav" [ngClass]="{ opened: isOpenMenu }">
+  <nav>
+    <ul>
+      <li>
+        <span class="material-symbols-rounded logo"> local_atm </span>
+      </li>
+      <li matTooltip="DASHBOARD">
+        <span class="material-symbols-rounded"> home </span>
+        <span class="title-options">DASHBOARD</span>
+      </li>
+      <li matTooltip="TABLA DE NÚMEROS">
+        <span class="material-symbols-rounded"> table </span>
+        <span class="title-options">TABLA DE NÚMEROS</span>
+      </li>
+    </ul>
+    <ul>
+      <li matTooltip="TEMA">
+        <span class="material-symbols-rounded"> dark_mode </span>
+        <span class="title-options">TEMA</span>
+      </li>
+      <li (click)="logout()" matTooltip="Cerrar sesión">
+        <span class="material-symbols-rounded logout"> logout </span>
+      </li>
+    </ul>
+
+    <span class="material-symbols-rounded toggle-menu" (click)="toggleMenu()">
+      chevron_right
+    </span>
+  </nav>
+</div>

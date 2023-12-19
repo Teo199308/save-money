@@ -1,0 +1,70 @@
+@import "src/sass/variables";
+
+.sidenav {
+  height: 100%;
+  width: 90px;
+  background-color: white;
+  box-shadow: 0 3px 10px 0 rgb(0 0 0 / 15%);
+  border-radius: 8px;
+  text-align: center;
+  padding-block: 22px;
+
+  &.opened {
+    width: auto;
+
+    .title-options {
+      display: block;
+    }
+
+    nav {
+      li {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+      }
+    }
+  }
+
+  .title-options {
+    display: none;
+  }
+
+  nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+    ul {
+      display: grid;
+      row-gap: 15px;
+    }
+
+    .material-symbols-rounded {
+      font-size: 30px;
+      color: $secundary-color;
+      cursor: pointer;
+
+      &.logo {
+        font-size: 50px;
+      }
+
+      &.logout,
+      &.logo {
+        color: $primary-color;
+      }
+
+      &.toggle-menu {
+        position: absolute;
+        right: -20px;
+        top: 10px;
+        border-radius: 100%;
+        background: white;
+        box-shadow: 0 0px 5px rgb(0 0 0 / 15%), 0 0px 10px rgb(0 0 0 / 20%);
+      }
+    }
+
+  }
+
+}
