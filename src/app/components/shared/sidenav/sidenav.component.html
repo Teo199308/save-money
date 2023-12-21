@@ -1,25 +1,26 @@
 <div class="sidenav" [ngClass]="{ opened: isOpenMenu }">
   <nav>
     <ul>
-      <li>
+      <div class="container-logo">
         <span class="material-symbols-rounded logo"> local_atm </span>
-      </li>
-      <li matTooltip="DASHBOARD">
+      </div>
+      <li class="" matTooltip="DASHBOARD">
         <span class="material-symbols-rounded"> home </span>
-        <span class="title-options">DASHBOARD</span>
+        <span class="title-options">{{ "DASHBOARD" | titlecase }}</span>
       </li>
-      <li matTooltip="TABLA DE NÚMEROS">
+      <li class="" matTooltip="TABLA DE NÚMEROS">
         <span class="material-symbols-rounded"> table </span>
-        <span class="title-options">TABLA DE NÚMEROS</span>
+        <span class="title-options">{{ "NÚMEROS" | titlecase }}</span>
       </li>
     </ul>
     <ul>
-      <li matTooltip="TEMA">
+      <li class="" matTooltip="TEMA">
         <span class="material-symbols-rounded"> dark_mode </span>
-        <span class="title-options">TEMA</span>
+        <span class="title-options">{{ "TEMA" | titlecase }}</span>
       </li>
-      <li (click)="logout()" matTooltip="Cerrar sesión">
+      <li class="" (click)="logout()" matTooltip="Cerrar sesión">
         <span class="material-symbols-rounded logout"> logout </span>
+        <span class="title-options"></span>
       </li>
     </ul>
 
