@@ -24,14 +24,22 @@
       </li>
     </ul>
     <ul>
-      <li [matTooltip]="isOpenMenu ? '' : 'TEMA'" matTooltipPosition="right" (click)="toggleTheme()">
+      <li
+        [matTooltip]="
+          isOpenMenu ? '' : isDarkThemeMode ? 'Modo claro' : 'Modo oscuro'
+        "
+        matTooltipPosition="right"
+        (click)="toggleTheme()"
+      >
         <span
           class="material-symbols-rounded"
           [ngClass]="{ 'light-theme': !isDarkThemeMode }"
         >
           dark_mode
         </span>
-        <span class="title-options">{{ "TEMA" | titlecase }}</span>
+        <span class="title-options">{{
+          isDarkThemeMode ? "Modo claro" : "Modo oscuro"
+        }}</span>
       </li>
       <li
         (click)="logout()"

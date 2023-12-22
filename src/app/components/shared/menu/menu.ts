@@ -1,13 +1,7 @@
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
 
-@Component({
-  selector: 'app-sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
-})
-export class SidenavComponent {
+export class Menu {
   isOpenMenu = false;
   isDarkThemeMode = false;
 
@@ -32,5 +26,4 @@ export class SidenavComponent {
   toggleTheme() {
     this.isDarkThemeMode = !this.isDarkThemeMode;
   }
-
 }
