@@ -4,23 +4,42 @@
       <div class="container-logo">
         <span class="material-symbols-rounded logo"> local_atm </span>
       </div>
-      <li class="" matTooltip="DASHBOARD">
+      <li
+        [routerLink]="['/dashboard']"
+        routerLinkActive="is-active"
+        [matTooltip]="isOpenMenu ? '' : 'DASHBOARD'"
+        matTooltipPosition="right"
+      >
         <span class="material-symbols-rounded"> home </span>
         <span class="title-options">{{ "DASHBOARD" | titlecase }}</span>
       </li>
-      <li class="" matTooltip="TABLA DE NÚMEROS">
+      <li
+        [routerLink]="['/table-numbers']"
+        routerLinkActive="is-active"
+        [matTooltip]="isOpenMenu ? '' : 'TABLA DE NÚMEROS'"
+        matTooltipPosition="right"
+      >
         <span class="material-symbols-rounded"> table </span>
         <span class="title-options">{{ "NÚMEROS" | titlecase }}</span>
       </li>
     </ul>
     <ul>
-      <li class="" matTooltip="TEMA">
-        <span class="material-symbols-rounded"> dark_mode </span>
+      <li [matTooltip]="isOpenMenu ? '' : 'TEMA'" matTooltipPosition="right" (click)="toggleTheme()">
+        <span
+          class="material-symbols-rounded"
+          [ngClass]="{ 'light-theme': !isDarkThemeMode }"
+        >
+          dark_mode
+        </span>
         <span class="title-options">{{ "TEMA" | titlecase }}</span>
       </li>
-      <li class="" (click)="logout()" matTooltip="Cerrar sesión">
+      <li
+        (click)="logout()"
+        [matTooltip]="isOpenMenu ? '' : 'Cerrar sesión'"
+        matTooltipPosition="right"
+      >
         <span class="material-symbols-rounded logout"> logout </span>
-        <span class="title-options"></span>
+        <span class="title-options">Cerrar sesión</span>
       </li>
     </ul>
 

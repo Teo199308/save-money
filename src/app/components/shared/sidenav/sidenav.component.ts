@@ -9,6 +9,7 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class SidenavComponent {
   isOpenMenu = false;
+  isDarkThemeMode = false;
 
   constructor(
     private readonly _loginService: LoginService,
@@ -26,6 +27,10 @@ export class SidenavComponent {
         this._loginService.user = null;
       })
       .catch((e) => console.log(e));
+  }
+
+  toggleTheme() {
+    this.isDarkThemeMode = !this.isDarkThemeMode;
   }
 
 }
