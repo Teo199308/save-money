@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LayoutRoutingModule } from 'src/app/components/layout/layout-routing.module';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
-import { SidenavModule } from 'src/app/components/shared/menu/sidenav/sidenav.module';
+import { MenuModule } from 'src/app/components/shared/menu/menu.module';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import { SidenavModule } from 'src/app/components/shared/menu/sidenav/sidenav.mo
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    SidenavModule
+    MenuModule
   ]
 })
 export class LayoutModule { }
