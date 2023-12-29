@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BreakpointService } from 'src/app/services/breakpoint/breakpoint.service';
 
+
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -8,7 +9,7 @@ import { BreakpointService } from 'src/app/services/breakpoint/breakpoint.servic
 })
 export class LayoutComponent {
 
-  isSidenav = true;
+isSidenav = true;
 
   constructor(
     private readonly _breakpointService: BreakpointService
@@ -18,5 +19,4 @@ export class LayoutComponent {
     this._breakpointService.resizeScreen()
       .subscribe((matches: boolean) => this.isSidenav = matches);
   }
-
 }

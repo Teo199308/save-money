@@ -3,7 +3,6 @@
 }
 
 .grid {
-
   &.sidenav {
     grid-template-columns: auto 1fr;
   }
@@ -11,5 +10,4 @@
   &.toolbar {
     grid-template-rows: auto 1fr;
   }
-
 }
