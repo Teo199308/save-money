@@ -10,11 +10,11 @@ export class MenuComponent {
   showSidenav = true;
 
   constructor(
-    private readonly breakpointservice: BreakpointService
+    private readonly _breakpointservice: BreakpointService
   ) { }
 
   ngOnInit() {
-    this.breakpointservice.resizeScreen()
+    this._breakpointservice.resizeScreen()
       .subscribe((matches: boolean) => this.showSidenav = matches)
   }
 
