@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { DataRandomNumber } from 'src/app/interfaces/data-random-number';
 import { DataSaveMoneyService } from 'src/app/services/data-save-money/data-save-money.service';
 import { LoginService } from 'src/app/services/login/login.service';
@@ -16,7 +15,6 @@ export class DashboardComponent {
 
   constructor(
     private readonly _loginService: LoginService,
-    private readonly _router: Router,
     private readonly _dataSaveMoneyService: DataSaveMoneyService
   ) { }
 
@@ -39,12 +37,5 @@ export class DashboardComponent {
       });
   }
 
-  logout() {
-    this._loginService.logout()
-      .then(() => {
-        this._router.navigate(['auth']);
-        this._loginService.user = null;
-      })
-      .catch((e) => console.log(e));
-  }
+
 }
