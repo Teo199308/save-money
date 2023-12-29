@@ -5,6 +5,8 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard.compo
 import { MaterialModule } from 'src/app/modules/material.module';
 import { SelectRandomNumberComponent } from './select-random-number/select-random-number.component';
 import { CurrentBalanceComponent } from './current-balance/current-balance.component';
+import { LastNumberComponent } from './last-number/last-number.component';
+import { GoalComponent } from './goal/goal.component';
 
 const routes: Routes = [{
   path: '',
@@ -16,7 +18,9 @@ const routes: Routes = [{
   declarations: [
     DashboardComponent,
     SelectRandomNumberComponent,
-    CurrentBalanceComponent
+    CurrentBalanceComponent,
+    LastNumberComponent,
+    GoalComponent
   ],
   imports: [
     CommonModule,
