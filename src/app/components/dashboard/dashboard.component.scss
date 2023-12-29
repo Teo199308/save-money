@@ -1,5 +1,22 @@
-.container-fluid {
-  display: grid;
-  grid-template-columns: 1fr;
-  height: 100vh;
+.content-statistics {
+  background-color: white;
+  border-radius: 8px;
+  max-width: 1080px;
+  height: 185px;
+  padding: 10px;
+  justify-content: space-around;
+  border-radius: 8px;
+
+  .col {
+    max-width: 340px;
+    border-radius: 34px;
+
+    &:nth-child(2) {
+      background-color: #FAD827;
+    }
+
+    &:last-child {
+      background-color: #F2A0FF;
+    }
+  }
 }

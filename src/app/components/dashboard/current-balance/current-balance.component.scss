@@ -1,0 +1,25 @@
+.content {
+  max-width: 340px;
+  border-radius: 34px;
+  position: relative;
+  background-color: #F9AAD9;
+
+  .col {
+    position: relative;
+
+    .content-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(15%, 50px);
+      height: 100px;
+    }
+
+  }
+
+  picture {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}

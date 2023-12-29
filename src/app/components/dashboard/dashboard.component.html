@@ -1,8 +1,18 @@
-<div *ngIf="!loading">
-  <div class="row mt-5">
+<div *ngIf="!loading" class="h-100 grid animate__animated animate__fadeIn">
+  <div class="row pt-5">
     <div class="col">
       <h1 class="m-0">Bienvenido</h1>
       <h2>{{ currentUserName }}</h2>
+    </div>
+  </div>
+
+  <div class="row m-0 justify-center">
+    <div class="row m-0 content-statistics">
+      <div class="col p-0">
+        <app-current-balance></app-current-balance>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
     </div>
   </div>
 
