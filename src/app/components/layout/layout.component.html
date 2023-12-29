@@ -1,4 +1,7 @@
-<div class="layout-content py-3 px-4 grid gap-5">
+<div
+  class="layout-content py-3 px-4 grid gap-5"
+  [ngClass]="{ sidenav: isSidenav, toolbar: !isSidenav }"
+>
   <div>
     <app-menu></app-menu>
   </div>
