@@ -41,18 +41,9 @@ export class SelectRandomNumberComponent {
         map((() => this._generateRandomNumber())),
         finalize(() => {
           if (this.randomNumber !== undefined) {
-            const dataRandomNumber: DataRandomNumber = {
-              number: this.randomNumber,
-              date: this._dt.now().toFormat('dd/MM/yy'),
-              value: this._calculateValue()
-            };
+            const dataRandomNumber: DataRandomNumber = this._createDataRandomNumber();
 
-            this._dataSaveMoneyService.saveRandomNumber(dataRandomNumber)
-              .then(() => {
-                this._showConffeti();
-                this._dataSaveMoneyService.reloadData$.next();
-              })
-              .catch((e) => console.log(e));
+            this._saveDataRandomNumber(dataRandomNumber);
           }
         })
       );
@@ -71,6 +62,23 @@ export class SelectRandomNumberComponent {
 
   private _generatedNumbersHasRandomNumber(randomNumber: number): boolean {
     return Array.from(this._dataSaveMoneyService.generatedNumbers.values()).some(number => number === randomNumber);
+  }
+
+  private _createDataRandomNumber(): DataRandomNumber {
+    return {
+      number: this.randomNumber,
+      date: this._dt.now().toFormat('dd/MM/yy'),
+      value: this._calculateValue()
+    };
+  }
+
+  private _saveDataRandomNumber(dataRandomNumber: DataRandomNumber) {
+    this._dataSaveMoneyService.saveRandomNumber(dataRandomNumber)
+      .then(() => {
+        this._showConffeti();
+        this._dataSaveMoneyService.getSelectedNumbers();
+      })
+      .catch((e) => console.log(e));
   }
 
   private _showConffeti() {

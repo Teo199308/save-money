@@ -24,8 +24,18 @@ export class DataSaveMoneyService {
     this.getSelectedNumbers();
   }
 
-  getSelectedNumbers(): Promise<QuerySnapshot<DocumentData>> {
-    return getDocs(this._getSelectedNumbersCollection());
+  getSelectedNumbers() {
+    getDocs(this._getSelectedNumbersCollection())
+      .then((response: QuerySnapshot<DocumentData>) => {
+        const selectedNumbers: DataRandomNumber[] = response.docs.map(doc => doc.data() as DataRandomNumber);
+
+        this.generatedNumbers = new Set(selectedNumbers.map(({ number }: { number: number }) => number));
+
+        this.dataRandomNumber = new Set(selectedNumbers);
+
+        console.log(this.generatedNumbers);
+        this.reloadData$.next();
+      });
   }
 
   saveRandomNumber(data: DataRandomNumber): Promise<DocumentReference<DocumentData>> {
