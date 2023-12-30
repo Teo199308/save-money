@@ -1,4 +1,7 @@
-<div *ngIf="!loading" class="h-100 grid animate__animated animate__fadeIn">
+<div
+  *ngIf="!loading"
+  class="h-100 grid animate__animated animate__fadeIn container-dashboard"
+>
   <div class="row pt-5">
     <div class="col">
       <h1 class="m-0">Bienvenido</h1>
@@ -7,16 +10,10 @@
   </div>
 
   <div class="row m-0 justify-center">
-    <div class="row m-0 content-statistics">
-      <div class="col p-0">
-        <app-current-balance></app-current-balance>
-      </div>
-      <div class="col p-0">
-        <app-last-number></app-last-number>
-      </div>
-      <div class="col p-0">
-        <app-goal></app-goal>
-      </div>
+    <div class="content-statistics">
+      <app-current-balance></app-current-balance>
+      <app-last-number></app-last-number>
+      <app-goal></app-goal>
     </div>
   </div>
 
