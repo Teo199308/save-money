@@ -4,6 +4,7 @@ import confetti from 'canvas-confetti';
 import { DateTime } from "luxon";
 import { Observable, interval } from 'rxjs';
 import { finalize, map, take } from 'rxjs/operators';
+import { DataRandomNumber } from 'src/app/interfaces/data-random-number';
 import { DataSaveMoneyService } from 'src/app/services/data-save-money/data-save-money.service';
 
 @Component({
@@ -31,9 +32,7 @@ export class SelectRandomNumberComponent {
 
   constructor(
     private readonly _dataSaveMoneyService: DataSaveMoneyService
-  ) {
-
-  }
+  ) { }
 
   startNumberAnimation() {
     this.numberAnimation$ = interval(50)
@@ -42,9 +41,11 @@ export class SelectRandomNumberComponent {
         map((() => this._generateRandomNumber())),
         finalize(() => {
           if (this.randomNumber !== undefined) {
-            const dataRandomNumber = { number: this.randomNumber, date: this._dt.now().toFormat('dd/MM/yy') }
-
-            this._showConffeti();
+            const dataRandomNumber: DataRandomNumber = {
+              number: this.randomNumber,
+              date: this._dt.now().toFormat('dd/MM/yy'),
+              value: this._calculateValue()
+            };
 
             this._dataSaveMoneyService.saveRandomNumber(dataRandomNumber)
               .then(() => {
@@ -69,7 +70,7 @@ export class SelectRandomNumberComponent {
   }
 
   private _generatedNumbersHasRandomNumber(randomNumber: number): boolean {
-    return Array.from(this._dataSaveMoneyService.generatedNumbers.values()).some(generatedNumber => generatedNumber.number === randomNumber);
+    return Array.from(this._dataSaveMoneyService.generatedNumbers.values()).some(number => number === randomNumber);
   }
 
   private _showConffeti() {
@@ -80,6 +81,12 @@ export class SelectRandomNumberComponent {
       scalar: 1.2,
       shapes: ['star']
     });
+  }
+
+  private _calculateValue() {
+    return this.randomNumber <= 60
+      ? this.randomNumber * 1000
+      : this.randomNumber * 100;
   }
 
 }
