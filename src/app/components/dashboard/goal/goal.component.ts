@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TOTAL_BALANCE } from 'src/app/constants/shared.consts';
 
 @Component({
   selector: 'app-goal',
@@ -6,6 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./goal.component.scss']
 })
 export class GoalComponent {
-  goal = 7241500;
+  readonly goal = TOTAL_BALANCE;
 
 }

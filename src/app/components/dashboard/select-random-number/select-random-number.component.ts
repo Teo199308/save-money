@@ -4,6 +4,7 @@ import confetti from 'canvas-confetti';
 import { DateTime } from "luxon";
 import { Observable, interval } from 'rxjs';
 import { finalize, map, take } from 'rxjs/operators';
+import { MAXIMUN_SAVE, MINIMUN_SAVE } from 'src/app/constants/shared.consts';
 import { DataRandomNumber } from 'src/app/interfaces/data-random-number';
 import { DataSaveMoneyService } from 'src/app/services/data-save-money/data-save-money.service';
 
@@ -42,6 +43,7 @@ export class SelectRandomNumberComponent {
         finalize(() => {
           if (this.randomNumber !== undefined) {
             const dataRandomNumber: DataRandomNumber = this._createDataRandomNumber();
+            this._showConffeti();
 
             this._saveDataRandomNumber(dataRandomNumber);
           }
@@ -75,7 +77,6 @@ export class SelectRandomNumberComponent {
   private _saveDataRandomNumber(dataRandomNumber: DataRandomNumber) {
     this._dataSaveMoneyService.saveRandomNumber(dataRandomNumber)
       .then(() => {
-        this._showConffeti();
         this._dataSaveMoneyService.getSelectedNumbers();
       })
       .catch((e) => console.log(e));
@@ -84,7 +85,7 @@ export class SelectRandomNumberComponent {
   private _showConffeti() {
     confetti({
       ...this._defaultConffeti,
-      particleCount: 100,
+      particleCount: 1000,
       origin: { y: 0.6 },
       scalar: 1.2,
       shapes: ['star']
@@ -93,8 +94,8 @@ export class SelectRandomNumberComponent {
 
   private _calculateValue() {
     return this.randomNumber <= 60
-      ? this.randomNumber * 1000
-      : this.randomNumber * 100;
+      ? this.randomNumber * MAXIMUN_SAVE
+      : this.randomNumber * MINIMUN_SAVE;
   }
 
 }
