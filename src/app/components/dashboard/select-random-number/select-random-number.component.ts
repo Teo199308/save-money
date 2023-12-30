@@ -47,7 +47,10 @@ export class SelectRandomNumberComponent {
             this._showConffeti();
 
             this._dataSaveMoneyService.saveRandomNumber(dataRandomNumber)
-              .then(() => { })
+              .then(() => {
+                this._showConffeti();
+                this._dataSaveMoneyService.reloadData$.next();
+              })
               .catch((e) => console.log(e));
           }
         })
