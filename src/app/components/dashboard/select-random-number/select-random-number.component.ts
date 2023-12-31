@@ -4,7 +4,7 @@ import confetti from 'canvas-confetti';
 import { DateTime } from "luxon";
 import { Observable, interval } from 'rxjs';
 import { finalize, map, take } from 'rxjs/operators';
-import { MAXIMUN_SAVE, MINIMUN_SAVE } from 'src/app/constants/shared.consts';
+import { MAXIMUN_SAVE, MINIMUN_SAVE, TOTAL_DAYS } from 'src/app/constants/shared.consts';
 import { DataRandomNumber } from 'src/app/interfaces/data-random-number';
 import { DataSaveMoneyService } from 'src/app/services/data-save-money/data-save-money.service';
 
@@ -14,14 +14,14 @@ import { DataSaveMoneyService } from 'src/app/services/data-save-money/data-save
   styleUrls: ['./select-random-number.component.scss']
 })
 export class SelectRandomNumberComponent {
-  private _totalNumbers = 10;
+  private _totalNumbers = TOTAL_DAYS;
   private _dt = DateTime;
 
   private _defaultConffeti = {
     spread: 360,
     ticks: 50,
     gravity: 0,
-    decay: 0.94,
+    decay: 0.95,
     startVelocity: 30,
     colors: ['FFE400', 'FFBD00', 'E89400', 'FFCA6C', 'FDFFB8']
   };
