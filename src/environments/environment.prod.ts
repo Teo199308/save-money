@@ -9,5 +9,5 @@ export const environment = {
   },
 
   emailApi: 're_8m1kBDDK_MN7j9YRqdh5aAtynCodNWjWU',
-  configuration: 'dev'
+  configuration: 'prod'
 };
