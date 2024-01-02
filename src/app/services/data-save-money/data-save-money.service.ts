@@ -33,7 +33,6 @@ export class DataSaveMoneyService {
 
         this.dataRandomNumber = new Set(selectedNumbers);
 
-        console.log(this.generatedNumbers);
         this.reloadData$.next();
       });
   }

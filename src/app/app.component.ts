@@ -20,7 +20,5 @@ export class AppComponent implements OnInit {
 
     // Sumar los valores en el array
     const sumaTotal = arrayValoresMonetarios.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
-
-    console.log("El valor total en miles es:", sumaTotal);
   }
 }
