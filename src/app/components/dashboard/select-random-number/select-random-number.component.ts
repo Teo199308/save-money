@@ -4,6 +4,8 @@ import confetti from 'canvas-confetti';
 import { DateTime } from "luxon";
 import { Observable, interval } from 'rxjs';
 import { finalize, map, take } from 'rxjs/operators';
+import { MAXIMUN_SAVE, MINIMUN_SAVE, TOTAL_DAYS } from 'src/app/constants/shared.consts';
+import { DataRandomNumber } from 'src/app/interfaces/data-random-number';
 import { DataSaveMoneyService } from 'src/app/services/data-save-money/data-save-money.service';
 
 @Component({
@@ -12,14 +14,14 @@ import { DataSaveMoneyService } from 'src/app/services/data-save-money/data-save
   styleUrls: ['./select-random-number.component.scss']
 })
 export class SelectRandomNumberComponent {
-  private _totalNumbers = 10;
+  private _totalNumbers = TOTAL_DAYS;
   private _dt = DateTime;
 
   private _defaultConffeti = {
     spread: 360,
     ticks: 50,
     gravity: 0,
-    decay: 0.94,
+    decay: 0.95,
     startVelocity: 30,
     colors: ['FFE400', 'FFBD00', 'E89400', 'FFCA6C', 'FDFFB8']
   };
@@ -31,9 +33,7 @@ export class SelectRandomNumberComponent {
 
   constructor(
     private readonly _dataSaveMoneyService: DataSaveMoneyService
-  ) {
-
-  }
+  ) { }
 
   startNumberAnimation() {
     this.numberAnimation$ = interval(50)
@@ -42,13 +42,10 @@ export class SelectRandomNumberComponent {
         map((() => this._generateRandomNumber())),
         finalize(() => {
           if (this.randomNumber !== undefined) {
-            const dataRandomNumber = { number: this.randomNumber, date: this._dt.now().toFormat('dd/MM/yy') }
-
+            const dataRandomNumber: DataRandomNumber = this._createDataRandomNumber();
             this._showConffeti();
 
-            this._dataSaveMoneyService.saveRandomNumber(dataRandomNumber)
-              .then(() => { })
-              .catch((e) => console.log(e));
+            this._saveDataRandomNumber(dataRandomNumber);
           }
         })
       );
@@ -66,17 +63,39 @@ export class SelectRandomNumberComponent {
   }
 
   private _generatedNumbersHasRandomNumber(randomNumber: number): boolean {
-    return Array.from(this._dataSaveMoneyService.generatedNumbers.values()).some(generatedNumber => generatedNumber.number === randomNumber);
+    return Array.from(this._dataSaveMoneyService.generatedNumbers.values()).some(number => number === randomNumber);
+  }
+
+  private _createDataRandomNumber(): DataRandomNumber {
+    return {
+      number: this.randomNumber,
+      date: this._dt.now().toFormat('dd/MM/yy'),
+      value: this._calculateValue()
+    };
+  }
+
+  private _saveDataRandomNumber(dataRandomNumber: DataRandomNumber) {
+    this._dataSaveMoneyService.saveRandomNumber(dataRandomNumber)
+      .then(() => {
+        this._dataSaveMoneyService.getSelectedNumbers();
+      })
+      .catch((e) => console.log(e));
   }
 
   private _showConffeti() {
     confetti({
       ...this._defaultConffeti,
-      particleCount: 100,
+      particleCount: 1000,
       origin: { y: 0.6 },
       scalar: 1.2,
       shapes: ['star']
     });
+  }
+
+  private _calculateValue() {
+    return this.randomNumber <= 60
+      ? this.randomNumber * MAXIMUN_SAVE
+      : this.randomNumber * MINIMUN_SAVE;
   }
 
 }

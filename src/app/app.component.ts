@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MAXIMUN_SAVE, MINIMUN_SAVE, TOTAL_DAYS } from 'src/app/constants/shared.consts';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   ngOnInit(): void {
-    const totalDias = 334;
+    const totalDias = TOTAL_DAYS;
     const arrayDeDias = Array.from({ length: totalDias }, (_, index) => index + 1);
 
     const arrayValoresMonetarios = arrayDeDias.map((valor) => {
       return valor <= 60
-        ? valor * 1000
-        : valor * 100;
+        ? valor * MAXIMUN_SAVE
+        : valor * MINIMUN_SAVE;
     });
 
     // Sumar los valores en el array

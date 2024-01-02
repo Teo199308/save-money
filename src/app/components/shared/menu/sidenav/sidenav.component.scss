@@ -41,6 +41,11 @@
           }
         }
 
+        &.li-logout:hover {
+          background-color: $primary-color;
+          color: white;
+        }
+
         .title-options {
           width: 0;
           max-width: 200px;

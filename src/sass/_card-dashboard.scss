@@ -1,0 +1,54 @@
+.content {
+  border-radius: 34px;
+  position: relative;
+
+  .container-info {
+    position: relative;
+
+    .content-info {
+      @media (width > 1024px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(15%, 50px);
+        height: 100px;
+      }
+
+      h3 {
+        padding: 0;
+      }
+    }
+  }
+
+  picture {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    picture {
+      top: 10px;
+      left: 10px;
+      z-index: -1;
+      opacity: 0.5;
+    }
+  }
+
+  @media (width < 1024px) {
+    .container-info {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content-img {
+      display: none;
+    }
+  }
+}

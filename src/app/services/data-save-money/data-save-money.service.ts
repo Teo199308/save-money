@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CollectionReference, DocumentData, DocumentReference, Firestore, QuerySnapshot, addDoc, collection, doc, getDocs } from '@angular/fire/firestore';
+import { Subject } from 'rxjs';
 import { SELECTED_NUMBERS, USERS } from 'src/app/constants/collection-docs-firebase';
 import { DataRandomNumber } from 'src/app/interfaces/data-random-number';
 import { LoginService } from 'src/app/services/login/login.service';
@@ -9,9 +10,12 @@ import { LoginService } from 'src/app/services/login/login.service';
   providedIn: 'root'
 })
 export class DataSaveMoneyService {
-  generatedNumbers = new Set<DataRandomNumber>();
+  generatedNumbers = new Set<number>();
+  dataRandomNumber = new Set<DataRandomNumber>();
 
   randomNumber!: number;
+
+  reloadData$: Subject<void> = new Subject();
 
   constructor(
     private firestore: Firestore,
@@ -20,8 +24,18 @@ export class DataSaveMoneyService {
     this.getSelectedNumbers();
   }
 
-  getSelectedNumbers(): Promise<QuerySnapshot<DocumentData>> {
-    return getDocs(this._getSelectedNumbersCollection());
+  getSelectedNumbers() {
+    getDocs(this._getSelectedNumbersCollection())
+      .then((response: QuerySnapshot<DocumentData>) => {
+        const selectedNumbers: DataRandomNumber[] = response.docs.map(doc => doc.data() as DataRandomNumber);
+
+        this.generatedNumbers = new Set(selectedNumbers.map(({ number }: { number: number }) => number));
+
+        this.dataRandomNumber = new Set(selectedNumbers);
+
+        console.log(this.generatedNumbers);
+        this.reloadData$.next();
+      });
   }
 
   saveRandomNumber(data: DataRandomNumber): Promise<DocumentReference<DocumentData>> {
