@@ -1,0 +1,34 @@
+@import 'src/sass/variables';
+
+.container {
+  height: 100vh;
+
+  .content-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .row {
+      height: 405px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        color: $secundary-color;
+      }
+    }
+
+    button.login-google-btn {
+      background-color: white;
+      width: 115px;
+      height: 80px;
+    }
+
+    .register {
+      text-decoration: underline;
+      color: $secundary-color;
+    }
+  }
+}

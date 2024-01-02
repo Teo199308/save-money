@@ -1,0 +1,13 @@
+.layout-content {
+  height: 100vh;
+}
+
+.grid {
+  &.sidenav {
+    grid-template-columns: auto 1fr;
+  }
+
+  &.toolbar {
+    grid-template-rows: auto 1fr;
+  }
+}

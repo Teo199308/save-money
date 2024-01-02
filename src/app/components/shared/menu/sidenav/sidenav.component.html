@@ -1,0 +1,59 @@
+<div class="sidenav" [ngClass]="{ opened: isOpenMenu }">
+  <nav>
+    <ul>
+      <div class="container-logo">
+        <span class="material-symbols-rounded logo"> local_atm </span>
+      </div>
+      <li
+        [routerLink]="['/dashboard']"
+        routerLinkActive="is-active"
+        [matTooltip]="isOpenMenu ? '' : 'DASHBOARD'"
+        matTooltipPosition="right"
+      >
+        <span class="material-symbols-rounded"> home </span>
+        <span class="title-options">{{ "DASHBOARD" | titlecase }}</span>
+      </li>
+      <li
+        [routerLink]="['/table-numbers']"
+        routerLinkActive="is-active"
+        [matTooltip]="isOpenMenu ? '' : 'TABLA DE NÚMEROS'"
+        matTooltipPosition="right"
+      >
+        <span class="material-symbols-rounded"> table </span>
+        <span class="title-options">{{ "NÚMEROS" | titlecase }}</span>
+      </li>
+    </ul>
+    <ul>
+      <li
+        [matTooltip]="
+          isOpenMenu ? '' : isDarkThemeMode ? 'Modo claro' : 'Modo oscuro'
+        "
+        matTooltipPosition="right"
+        (click)="toggleTheme()"
+      >
+        <span
+          class="material-symbols-rounded"
+          [ngClass]="{ 'light-theme': !isDarkThemeMode }"
+        >
+          dark_mode
+        </span>
+        <span class="title-options">{{
+          isDarkThemeMode ? "Modo claro" : "Modo oscuro"
+        }}</span>
+      </li>
+      <li
+        (click)="logout()"
+        [matTooltip]="isOpenMenu ? '' : 'Cerrar sesión'"
+        matTooltipPosition="right"
+        class="li-logout"
+      >
+        <span class="material-symbols-rounded logout"> logout </span>
+        <span class="title-options">Cerrar sesión</span>
+      </li>
+    </ul>
+
+    <span class="material-symbols-rounded toggle-menu" (click)="toggleMenu()">
+      chevron_right
+    </span>
+  </nav>
+</div>

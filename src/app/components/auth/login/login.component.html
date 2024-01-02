@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row h-100">
+    <div class="col-md-6 col-12 text-center">
+      <img
+        src="./../../../../assets/img/img-login.svg"
+        class="img-fluid h-100"
+        alt=""
+      />
+    </div>
+    <div class="col-md-6 col-12 content-form">
+      <div class="row">
+        <div>
+          <h1>AHORRANDITO</h1>
+          <h2>Una manera divertida de ahorrar</h2>
+        </div>
+
+        <div class="d-flex flex-column align-items-center">
+          <h3>Iniciar sesión con:</h3>
+
+          <button
+            mat-raised-button
+            class="login-google-btn mt-4"
+            (click)="loginWithGoogle()"
+          >
+            <img src="../../../../assets/img/google-icon.svg" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <!-- <app-form-auth></app-form-auth> -->
+      <!-- <a class="register mt-3" [routerLink]="['/auth/register']">REGISTRARSE</a> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+@import "src/sass/variables";
+
+
+.sidenav {
+  height: 100%;
+  width: auto;
+  background-color: white;
+  box-shadow: 0 3px 10px 0 rgb(0 0 0 / 15%);
+  border-radius: 8px;
+  padding-block: 22px;
+
+  nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+    ul {
+      display: grid;
+      row-gap: 10px;
+      place-items: center;
+
+      li {
+        display: grid;
+        align-items: center;
+        grid-template-columns: auto;
+        column-gap: 20px;
+        padding: 10px;
+        margin-inline: 10px;
+        border-radius: 25px;
+        cursor: pointer;
+
+        &.is-active,
+        &:hover {
+          background-color: $secundary-color;
+          color: white;
+
+          .material-symbols-rounded {
+            color: white;
+          }
+        }
+
+        &.li-logout:hover {
+          background-color: $primary-color;
+          color: white;
+        }
+
+        .title-options {
+          width: 0;
+          max-width: 200px;
+          height: 0;
+          overflow: hidden;
+          text-wrap: nowrap;
+          transition: $default-transition;
+        }
+      }
+
+      .container-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .material-symbols-rounded {
+        font-size: 30px;
+        color: $secundary-color;
+
+        &.logo {
+          font-size: 50px;
+        }
+
+        &.logout,
+        &.logo {
+          color: $primary-color;
+        }
+
+        &.light-theme {
+          font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 40;
+        }
+      }
+    }
+
+    .toggle-menu {
+      position: absolute;
+      right: -20px;
+      top: 10px;
+      cursor: pointer;
+      border-radius: 100%;
+      background: white;
+      box-shadow: 0 0px 5px rgb(0 0 0 / 15%), 0 0px 10px rgb(0 0 0 / 20%);
+    }
+  }
+
+  &.opened {
+    nav {
+      ul {
+        place-items: normal;
+        transition: .5s;
+
+        li {
+          grid-template-columns: auto 1fr;
+
+          .title-options {
+            width: 115px;
+            height: auto;
+            max-width: 200px;
+          }
+        }
+      }
+    }
+  }
+}

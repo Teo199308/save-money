@@ -1,0 +1,13 @@
+<div class="content-random-number">
+  <!-- <h2>{{ currentDate | date : "MMMM d, y" }}</h2> -->
+  <div>
+    <ng-container
+      *ngIf="numberAnimation$ | async as animationResult; else selectNumber"
+    >
+      <h1>{{ animationResult }}</h1>
+    </ng-container>
+    <ng-template #selectNumber>
+      <h1 class="m-0 init-random" (click)="startNumberAnimation()">GO</h1>
+    </ng-template>
+  </div>
+</div>

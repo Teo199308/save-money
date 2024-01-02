@@ -1,0 +1,20 @@
+<div class="h-100 grid animate__animated animate__fadeIn container-dashboard">
+  <div class="row pt-5">
+    <div class="col">
+      <h1 class="m-0">Bienvenido</h1>
+      <h2>{{ currentUserName }}</h2>
+    </div>
+  </div>
+
+  <div class="row m-0 justify-center">
+    <div class="content-statistics">
+      <app-current-balance></app-current-balance>
+      <app-last-number></app-last-number>
+      <app-goal></app-goal>
+    </div>
+  </div>
+
+  <app-select-random-number
+    class="row justify-content-center"
+  ></app-select-random-number>
+</div>
