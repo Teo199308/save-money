@@ -41,7 +41,7 @@
           }
         }
 
-        &:last-child:hover {
+        &.li-logout:hover {
           background-color: $primary-color;
           color: white;
         }
