@@ -1,7 +1,28 @@
 @import 'src/sass/variables';
 
 .container {
-  height: 100vh;
+
+  .container-login {
+    @media (width < 1024px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+  }
+
+  .container-img {
+    height: 100vh;
+    padding-block: 20px;
+    display: flex;
+    justify-content: center;
+
+    @media (width < 1024px) {
+      display: none;
+    }
+  }
 
   .content-form {
     display: flex;
