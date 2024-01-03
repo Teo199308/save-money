@@ -1,0 +1,19 @@
+<div class="p-4">
+  <h3 class="h3 d-flex justify-between align-items-center">
+    <span>
+      {{ data.title }}
+    </span>
+
+    <button mat-icon-button mat-dialog-close>
+      <span class="material-symbols-rounded"> close </span>
+    </button>
+  </h3>
+
+  <div class="pb-3">
+    <p>{{ data.content }}</p>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" mat-dialog-close>Entiendo</button>
+  </div>
+</div>

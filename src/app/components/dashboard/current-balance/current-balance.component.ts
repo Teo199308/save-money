@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { interval, map, takeWhile } from 'rxjs';
 import { DataSaveMoneyService } from 'src/app/services/data-save-money/data-save-money.service';
 
@@ -7,7 +7,7 @@ import { DataSaveMoneyService } from 'src/app/services/data-save-money/data-save
   templateUrl: './current-balance.component.html',
   styleUrls: ['./current-balance.component.scss']
 })
-export class CurrentBalanceComponent {
+export class CurrentBalanceComponent implements OnInit {
   currentBalance = 0;
   counter = 0;
 

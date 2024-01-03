@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { BreakpointService } from 'src/app/services/breakpoint/breakpoint.service';
+import { Component, OnInit } from '@angular/core';
+import { BreakpointService } from 'src/app/services/utilities/breakpoint/breakpoint.service';
 
 
 @Component({
@@ -7,9 +7,9 @@ import { BreakpointService } from 'src/app/services/breakpoint/breakpoint.servic
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
 
-isSidenav = true;
+  isSidenav = true;
 
   constructor(
     private readonly _breakpointService: BreakpointService

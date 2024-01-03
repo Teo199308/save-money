@@ -9,6 +9,7 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getFirestore, provideFirestore, } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AlertModalModule } from 'src/app/components/shared/alert-modal/alert-modal.module';
 import { MaterialModule } from 'src/app/modules/material.module';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,7 @@ registerLocaleData(localeEs, 'es');
     BrowserAnimationsModule,
     FontAwesomeModule,
     MaterialModule,
+    AlertModalModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
