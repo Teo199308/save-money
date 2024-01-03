@@ -36,7 +36,8 @@
           background-color: $secundary-color;
           color: white;
 
-          .material-symbols-rounded {
+          .material-symbols-rounded,
+          .title-options {
             color: white;
           }
         }
@@ -52,6 +53,7 @@
           height: 0;
           overflow: hidden;
           text-wrap: nowrap;
+          color: $secundary-color;
           transition: $default-transition;
         }
       }
