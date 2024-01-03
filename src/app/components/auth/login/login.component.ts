@@ -14,7 +14,6 @@ export class LoginComponent {
     private _router: Router
   ) { }
 
-
   loginWithGoogle() {
     this._loginService.loginWithGoogle()
       .then((resp: UserCredential) => {

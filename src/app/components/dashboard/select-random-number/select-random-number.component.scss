@@ -1,6 +1,7 @@
 @import 'src/sass/variables';
 
 .content-random-number {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,6 +9,17 @@
   width: 338px;
   height: 338px;
   padding: 0;
+
+  &.disabled {
+    &::before {
+      content: '';
+      width: 10px;
+      height: 100%;
+      position: absolute;
+      background: #f39200;
+      transform: rotate(40deg);
+    }
+  }
 
 
   div {
