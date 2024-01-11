@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { MaterialModule } from 'src/app/modules/material.module';
-import { CurrentBalanceComponent } from './current-balance/current-balance.component';
-import { GoalComponent } from './goal/goal.component';
-import { LastNumberComponent } from './last-number/last-number.component';
+import { CurrentBalanceComponent } from './cards/current-balance/current-balance.component';
+import { GoalComponent } from './cards/goal/goal.component';
+import { LastNumberComponent } from './cards/last-number/last-number.component';
 import { SelectRandomNumberComponent } from './select-random-number/select-random-number.component';
+import { SharedCardComponent } from './cards/shared-card/shared-card.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,7 +21,8 @@ const routes: Routes = [{
     SelectRandomNumberComponent,
     CurrentBalanceComponent,
     LastNumberComponent,
-    GoalComponent
+    GoalComponent,
+    SharedCardComponent
   ],
   imports: [
     CommonModule,

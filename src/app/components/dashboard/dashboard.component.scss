@@ -1,18 +1,61 @@
 .container-dashboard {
-  grid-auto-rows: max-content;
-  align-content: space-around;
+  display: grid;
+  grid-template-columns: 162px 162px repeat(5, 1fr);
+  grid-template-rows: 0px 1fr 60px repeat(3, 140px) 168px;
+  gap: 20px 10px;
+  grid-template-areas:
+    ". . . . . . ."
+    "welcome welcome welcome welcome welcome welcome welcome"
+    ". . . . . . ."
+    "last-number last-number calendario calendario calendario historial historial"
+    "current-balance current-balance calendario calendario calendario historial historial"
+    "goal goal calendario calendario calendario historial historial"
+    "random-number datos datos datos datos historial historial";
 
-  .content-statistics {
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    height: 185px;
-    max-width: 1080px;
-    padding-block: 10px;
-    border-radius: 8px;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.15);
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 50px repeat(5, 1fr);
+    grid-template-areas:
+      "welcome"
+      "."
+      "last-number"
+      "current-balance"
+      "goal"
+      "random-number"
+      "calendario"
+      "datos"
+      "historial";
   }
+}
+
+.last-number {
+  grid-area: last-number;
+}
+
+.current-balance {
+  grid-area: current-balance;
+}
+
+.goal {
+  grid-area: goal;
+}
+
+.random-number {
+  grid-area: random-number;
+}
+
+.calendario {
+  grid-area: calendario;
+}
+
+.datos {
+  grid-area: datos;
+}
+
+.historial {
+  grid-area: historial;
+}
+
+.welcome {
+  grid-area: welcome;
 }

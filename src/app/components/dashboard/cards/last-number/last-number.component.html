@@ -1,0 +1,9 @@
+<app-shared-card
+  [title]="'Último número'"
+  [data]="
+    _sortNumberService.lastNumberSelected === undefined
+      ? '--'
+      : _sortNumberService.lastNumberSelected.number
+  "
+  [class]="'last-number'"
+></app-shared-card>

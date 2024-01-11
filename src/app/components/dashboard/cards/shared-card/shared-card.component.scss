@@ -1,14 +1,30 @@
+@import 'src/sass/variables';
+
 .content {
-  border-radius: 34px;
+  border-radius: 8px;
+  box-shadow: $box-shadow-default;
   position: relative;
+
+  &.last-number {
+    background-color: $blue-pastel;
+  }
+
+  &.current-balance {
+    background-color: #C8C3F8;
+  }
+
+  &.goal {
+    background-color: #C4E5C9;
+
+  }
 
   .content-info {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    justify-content: center;
     align-items: center;
     text-align: center;
     height: 100%;
+    padding-block: 15px;
   }
 
   .background {
