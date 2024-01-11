@@ -4,7 +4,7 @@
 
 .grid {
   &.sidenav {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: minmax(90px, auto) 1fr;
   }
 
   &.toolbar {
